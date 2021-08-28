@@ -1,16 +1,21 @@
-const arr = [1, 2, 3, 4, 5, 6, 7, 6, 5, 4];
+//Functional Javascript
 
-const withIndex = arr.map((v, i) => `index: ${i}, value: ${v}`);
-console.log(withIndex);
+const arr = ["5", "2", "3"];
 
-const some = arr.some(v => v === 6)
-console.log("some", some);
+// const withIndex = arr.map((value, index) => `index: ${index}, value: ${value}`);
+// console.log(withIndex);
 
-const every = arr.every(v => v > 3);
-console.log("every", every);
+// const some = arr.some((v) => v === 6);
+// console.log("some", some);
 
-const filter = arr.filter(v => v !== 5)
-console.log("filter", filter);
+// const every = arr.every((v) => v > 3);
+// console.log("every", every);
 
-const sorted = arr.sort((a, b) => a < b);
-console.log("sorted", sorted);
+// const filter = arr.filter((v) => v !== 5);
+// console.log("filter", filter);
+
+const sorted = arr.sort((a, b) => {
+  console.log(a, b, a < b);
+  return a < b ? -1 : 1;
+});
+console.log("sorted", arr);

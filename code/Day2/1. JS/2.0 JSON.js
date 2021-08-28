@@ -1,15 +1,15 @@
-//JavaScript Object Notation -> It's a format
+// JavaScript Object Notation -> It's a format
 // Looks same as Javascript Object but Object can have functions, methods, variables !
 // While JSON is data, format used for data transfer
 
 const person = {
-    "name" : "kaushik",
-    getAge : () => {
-        return "22"
-    }
-}
+  name: "kaushik",
+  getAge: () => {
+    return "22";
+  },
+};
 
-// personJSON 
+// personJSON
 // {
 //     "name": "kaushik",
 //     "age" : 22,
