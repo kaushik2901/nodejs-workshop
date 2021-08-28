@@ -5,7 +5,7 @@ http
   .createServer(function (request, response) {
     if (request.url == "/") {
       response.writeHead(200);
-      response.write(JSON.stringify({ name: "test", enroll: 21 }));
+      response.write(JSON.stringify({ name: "Kaushik", enroll: 21 }));
     } else if (request.url == "/data") {
       fs.readFile("./data.csv", "utf-8", function (err, data) {
         var responseData = { Hello: "World" };
