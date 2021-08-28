@@ -1,3 +1,8 @@
+// Explain APIs
+// Start server
+// Call get api from browser
+// Show post API with console log
+
 var http = require('http');
 
 // Create a basic server
