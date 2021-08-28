@@ -6,6 +6,7 @@ http
     if (request.url == "/") {
       response.writeHead(200);
       response.write(JSON.stringify({ name: "test", enroll: 21 }));
+      response.end();
     } else if (request.url == "/data") {
       fs.readFile("./data.csv", "utf-8", function (err, data) {
         var responseData = { Hello: "World" };
@@ -24,6 +25,7 @@ http
     } else {
       response.writeHead(404);
       response.write("Page Not Found!");
+      response.end();
     }
   })
   .listen(3000, () => console.log("node server running on port 3000"));
