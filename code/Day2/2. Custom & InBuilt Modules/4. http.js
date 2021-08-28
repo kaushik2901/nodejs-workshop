@@ -4,20 +4,27 @@
 // Show post API with console log
 // set content type
 
-const http = require("http");
 
 // Create a basic server
+// const http = require("http");
 // http
 //   .createServer(function (req, res) {
-//     res.writeHead(200, "text/html");
 //     res.write("Hello World!");
 //     res.end();
 //   })
 //   .listen(8080);
 
-// content type - application/json
-// query string req.url
+// Content Type
+// const http = require("http");
+// http
+//   .createServer(function (req, res) {
+//     res.writeHead(200, "text/html");
+//     res.write("<h2>Hello World!</h2>");
+//     res.end();
+//   })
+//   .listen(8080);
 
+// Read Query String
 // const http = require("http");
 // const url = require("url");
 
