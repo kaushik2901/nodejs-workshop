@@ -47,15 +47,14 @@ const users = [
     }
 ]
 
-
-const createFilteredArray = (array, isValid) => {
-    const arr = [];
-    for(let i = 0; i < array.length; i++) {
-        if(isValid(users[i])) {
-            arr.push(users[i]);
+const createFilteredArray = (inputArray, isValid) => {
+    const resultArray = [];
+    for(let i = 0; i < inputArray.length; i++) {
+        if(isValid(inputArray[i])) {
+            resultArray.push(inputArray[i]);
         }
     }
-    return arr;
+    return resultArray;
 }
 
 //Todo: Write findUsersFromINDIA
@@ -71,12 +70,16 @@ const findUsersWhoseFriendIsNorman = (user) => {
 }
 
 
-const prettyConsoleLog = (data) => JSON.stringify(data, null, 4) 
-prettyConsoleLog(createFilteredArray(users, findUsersFromINDIA));
-prettyConsoleLog(createFilteredArray(users, findUsersWhoseFriendIsNorman));
+const prettyConsoleLog = (message, data) => console.log(message, JSON.stringify(data, null, 4)) 
+prettyConsoleLog("findUsersFromINDIA", createFilteredArray(users, findUsersFromINDIA));
+prettyConsoleLog("findUsersWhoseFriendIsNorman", createFilteredArray(users, findUsersWhoseFriendIsNorman));
 
 
 //Better way to write same function
 
 const filteredData = users.filter(user => user.countryCode === "IND");
-prettyConsoleLog(filteredData)
+prettyConsoleLog("findUsersFromINDIA", filteredData)
+prettyConsoleLog("findUsersWhoseFriendIsNorman",users.filter(user => user.friends.find(friend => friend.name === "Norman")));
+
+
+//Pure vs Impure Function ?
