@@ -1,19 +1,16 @@
-setTimeout(() => {
-    console.log(`i/o activity which takes time : ${person}`);
-}, 3000);
+console.log("Before");
 
+function myCallBackFunction(user) {
+  console.log(user);
+  console.log("After");
+}
 
-console.log("Before")
-const user = getUser(1);
+getUser(1, myCallBackFunction);
 
-console.log(getUser);
-console.log("After")
-
-function getUser(id) {
-    setTimeout(() => {
-        console.log("i/o activity which takes time");
-        return {id: id, userName: "rohan"}
-    }, 3000);
-    
-    return null;
+function getUser(id, callback) {
+  setTimeout(() => {
+    console.log("i/o activity which takes time");
+    const userFromDB = { id: id, userName: "rohan" };
+    callback(userFromDB);
+  }, 3000);
 }
