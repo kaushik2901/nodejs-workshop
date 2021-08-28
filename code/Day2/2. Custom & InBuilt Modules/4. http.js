@@ -57,9 +57,11 @@
 //     }
 //   })
 //   .listen(8080);
+// fetch("http://localhost:8080", { method: 'POST', body: 'data from post' }).then(r => r.text()).then(console.log)
 
 // Routing
 // const http = require("http");
+// const { todo } = require("qunit");
 // http
 //   .createServer(function (req, res) {
 //     if(req.url == "/") {
