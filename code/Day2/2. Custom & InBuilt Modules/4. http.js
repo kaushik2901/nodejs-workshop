@@ -1,8 +1,4 @@
-// Explain APIs
-// Start server
-// Call get api from browser
-// Show post API with console log
-// set content type
+// What are APIs ?
 
 // Create a basic server
 // const http = require("http");
