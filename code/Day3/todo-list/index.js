@@ -9,8 +9,11 @@ app.use(
   })
 );
 
+app.use(express.static('public'))
+
 const guid = () =>
   Date.now().toString(36) + Math.random().toString(36).substring(2);
+
 const todoList = [
   {
     id: "kt3ytv9kmsnc6wpz4q",

@@ -8,20 +8,49 @@ http
       response.write(JSON.stringify({ name: "test", enroll: 21 }));
       response.end();
     } else if (request.url == "/data") {
-      fs.readFile("./data.csv", "utf-8", function (err, data) {
-        var responseData = { Hello: "World" };
+      if (request.method.toUpperCase() == "GET") {
+        fs.readFile("./data.csv", "utf-8", function (err, data) {
+          var responseData = { Hello: "World" };
 
-        var lines = data.split("\n");
-        lines.forEach(function (line) {
-          var parts = line.split(",");
-          responseData[parts[0]] = parts[1];
+          var lines = data.split("\n");
+          lines.forEach(function (line) {
+            var parts = line.split(",");
+            responseData[parts[0]] = parts[1];
+          });
+
+          response.writeHead(200, {
+            "Content-Type": "application/json",
+          });
+          response.end(JSON.stringify(responseData));
+        });
+      } else if (request.method.toUpperCase() == "POST") {
+        let body = "";
+
+        req.on("data", (chunk) => {
+          body += chunk.toString();
         });
 
-        response.writeHead(200, {
-          "Content-Type": "application/json",
+        req.on("end", () => {
+          if (req.headers["content-type"] === "application/json")
+            body = JSON.parse(body);
+          
+            fs.appendFileSync("./data.csv", body.data, function (err, data) {
+              var responseData = { Hello: "World" };
+      
+              var lines = data.split("\n");
+              lines.forEach(function (line) {
+                var parts = line.split(",");
+                responseData[parts[0]] = parts[1];
+              });
+      
+              response.writeHead(200, {
+                "Content-Type": "application/json",
+              });
+              response.end(JSON.stringify(responseData));
+            });
+
         });
-        response.end(JSON.stringify(responseData));
-      });
+      }
     } else {
       response.writeHead(404);
       response.write("Page Not Found!");
