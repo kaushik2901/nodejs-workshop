@@ -71,7 +71,7 @@ const findUsersWhoseFriendIsNorman = (user) => {
 
 const prettyConsoleLog = (message, data) =>
   console.log(message, JSON.stringify(data, null, 4));
-prettyConsoleLog(
+console.log(
   "findUsersFromINDIA",
   createFilteredArray(users, findUsersFromINDIA)
 );
@@ -82,8 +82,13 @@ prettyConsoleLog(
 
 //Better way to write same function
 
-// const filteredData = users.filter(user => user.countryCode === "IND");
-// prettyConsoleLog("findUsersFromINDIA", filteredData)
-// prettyConsoleLog("findUsersWhoseFriendIsNorman",users.filter(user => user.friends.find(friend => friend.name === "Norman")));
+const filteredData = users.filter((user) => user.countryCode === "IND");
+prettyConsoleLog("findUsersFromINDIA", filteredData);
+prettyConsoleLog(
+  "findUsersWhoseFriendIsNorman",
+  users.filter((user) =>
+    user.friends.find((friend) => friend.name === "Norman")
+  )
+);
 
 //Pure vs Impure Function ?

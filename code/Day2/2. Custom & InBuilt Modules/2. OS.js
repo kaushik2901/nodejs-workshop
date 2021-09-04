@@ -1,4 +1,4 @@
-// const os = require('os');
+// const os = require("os");
 
 // // os.EOL // gives the line delimiter sequence. It's \n on Linux and macOS, and \r\n on Windows.
 
