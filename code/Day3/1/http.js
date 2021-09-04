@@ -1,5 +1,3 @@
-// What are APIs ?
-
 // Create a basic server
 // const http = require("http");
 // http
@@ -24,9 +22,7 @@
 // http
 //   .createServer(function (req, res) {
 //     res.writeHead(200, { "Content-Type": "text/html" });
-//     const q = new URL(req.url, true).query;
-//     const txt = q.year + " " + q.month;
-//     res.end(txt);
+//     res.end(req.url);
 //   })
 //   .listen(8080);
 
