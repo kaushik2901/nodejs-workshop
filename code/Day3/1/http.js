@@ -18,13 +18,15 @@
 //   .listen(8080);
 
 // Read Query String
-// const http = require("http");
-// http
-//   .createServer(function (req, res) {
-//     res.writeHead(200, { "Content-Type": "text/html" });
-//     res.end(req.url);
-//   })
-//   .listen(8080);
+const http = require("http");
+const url = require("url");
+http
+  .createServer(function (req, res) {
+    res.writeHead(200, { "Content-Type": "text/html" });
+    const query = url.parse(req.url, false, true).query;
+    res.end(query);
+  })
+  .listen(8080);
 
 // POST Data
 // const http = require("http");
