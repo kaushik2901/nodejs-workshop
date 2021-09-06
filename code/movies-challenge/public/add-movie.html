@@ -82,13 +82,24 @@
         integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
         crossorigin="anonymous"></script>
 
-    <script>
+    <script type="module">
+        import moviesService from './movies-service.js'
 
-        document.addEventListener('submit', function (event) {
+        document.addEventListener('submit', (event) => {
             event.preventDefault();
 
-            const data = Object.fromEntries(new FormData(event.target));
-            console.log(data);
+            const { title, imageURL, description, duration } = Object.fromEntries(new FormData(event.target));
+
+            const err = undefined; // TODO: Add Basic Javascript Validation and generate error object if form is not valid
+
+            if (err) {
+                alert(err.message);
+                return;
+            }
+
+            moviesService.addMovie({ title, imageURL, description, duration }, () => {
+                // TODO: redirect to home page
+            });
         });
     </script>
 

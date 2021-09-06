@@ -50,7 +50,7 @@
         <section class="py-5 text-center container">
             <div class="row py-lg-5">
                 <div class="col-lg-6 col-md-8 mx-auto">
-                    <h1 class="fw-light">Album example</h1>
+                    <h1 class="fw-light">Movies Library Example</h1>
                     <p class="lead text-muted">Something short and leading about the collection below—its contents, the
                         creator, etc. Make it short and sweet, but not too short so folks don’t simply skip over it
                         entirely.</p>
@@ -85,62 +85,35 @@
         integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
         crossorigin="anonymous"></script>
 
-    <script>
+    <script type="module">
 
-        const data = [
-            {
-                id: "1",
-                title: "Test",
-                description: "This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.",
-                imageURL: "https://via.placeholder.com/150x90",
-                duration: "9 mins"
-            },
-            {
-                id: "1",
-                title: "Test",
-                description: "This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.",
-                imageURL: "https://via.placeholder.com/150x90",
-                duration: "9 mins"
-            },
-            {
-                id: "1",
-                title: "Test",
-                description: "This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.",
-                imageURL: "https://via.placeholder.com/150x90",
-                duration: "9 mins"
-            },
-            {
-                id: "1",
-                title: "Test",
-                description: "This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.",
-                imageURL: "https://via.placeholder.com/150x90",
-                duration: "9 mins"
-            },
-        ]
+        import moviesService from './movies-service.js'
 
-        function loadData() {
+        const loadMovies = () => {
             const container = document.getElementById('movies-list-container');
-            container.innerHTML = data.map(movie => `
-                    <div class="col">
-                        <div class="card shadow-sm">
-                            <img src="${movie.imageURL}" alt="${movie.title}" />
-                            <div class="card-body">
-                                <p class="card-text">${movie.title}</p>
-                                <p class="card-text">${movie.description}</p>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div class="btn-group">
-                                        <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                                        <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-                                    </div>
-                                    <small class="text-muted">${movie.duration}</small>
+            moviesService.getAllMovies((moviesData) => {
+                container.innerHTML = moviesData.map(movie => `
+                <div class="col">
+                    <div class="card shadow-sm">
+                        <div style="background-image: url('${movie.imageURL}'); background-size: cover; background-repeat: no-repeat; background-position: center; width: 100%; height: 280px"></div>
+                        <div class="card-body">
+                            <p class="card-text">${movie.title}</p>
+                            <p class="card-text">${movie.description}</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    <a href="./view-movie.html?id=${movie.id}" class="btn btn-sm btn-outline-secondary">View</a>
+                                    <a href="./edit-movie.html?id=${movie.id}" class="btn btn-sm btn-outline-secondary">Edit</a>
                                 </div>
+                                <small class="text-muted">${movie.duration}</small>
                             </div>
                         </div>
                     </div>
+                </div>
             `).join(" ");
+            });
         }
 
-        window.addEventListener('load', () => loadData());
+        window.addEventListener('load', () => loadMovies());
 
     </script>
 
