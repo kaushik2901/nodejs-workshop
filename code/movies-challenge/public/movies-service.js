@@ -59,4 +59,8 @@ export default {
     // TODO: Implement following method with fetch API
     // TODO: On successful API call execute callback
   },
+
+  incrementLike(id, callback) {
+    
+  }
 };

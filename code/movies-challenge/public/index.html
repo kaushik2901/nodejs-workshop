@@ -103,6 +103,7 @@
                                 <div class="btn-group">
                                     <a href="./view-movie.html?id=${movie.id}" class="btn btn-sm btn-outline-secondary">View</a>
                                     <a href="./edit-movie.html?id=${movie.id}" class="btn btn-sm btn-outline-secondary">Edit</a>
+                                    <button onclick="incrementLike('${movie.id}')" class="btn btn-sm btn-outline-secondary">(${movie.likes}) ❤</button>
                                 </div>
                                 <small class="text-muted">${movie.duration}</small>
                             </div>
@@ -111,6 +112,10 @@
                 </div>
             `).join(" ");
             });
+        }
+
+        const incrementLike = (id) => {
+            moviesService.incrementLike(id, () => loadMovies());
         }
 
         window.addEventListener('load', () => loadMovies());
