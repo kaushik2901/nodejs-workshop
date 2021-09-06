@@ -39,12 +39,18 @@ export default {
     callback(data);
   },
 
+  getMovie(id, callback) {
+    // TODO: Fetch from api instead of static data
+    callback(data[id]);
+  },
+
   addMovie({ title, imageURL, description, duration }, callback) {
     // TODO: Implement following method with fetch API
     // TODO: On successful API call execute callback
   },
 
   updateMovie(id, { title, imageURL, description, duration }, callback) {
+    console.log(id, title, imageURL, description, duration);
     // TODO: Implement following method with fetch API
     // TODO: On successful API call execute callback
   },

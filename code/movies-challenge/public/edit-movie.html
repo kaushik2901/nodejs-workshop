@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content="" />
-    <title>Add Movie</title>
+    <title>Edit Movie</title>
 
     <!-- Bootstrap core CSS -->
     <link
@@ -37,7 +37,7 @@
     <header>
       <div class="navbar navbar-dark bg-dark shadow-sm">
         <div class="container">
-          <a href="/index.html" class="navbar-brand d-flex align-items-center">
+          <a href="./index.html" class="navbar-brand d-flex align-items-center">
             <strong>Movies</strong>
           </a>
         </div>
@@ -109,6 +109,20 @@
     <script type="module">
       import moviesService from "./movies-service.js";
 
+      const params = new URLSearchParams(location.search);
+      const id = params.get("id");
+
+      const loadMovie = () => {
+        moviesService.getMovie(id, (data) => {
+          document.getElementById("title").value = data.title;
+          document.getElementById("description").value = data.description;
+          document.getElementById("imageURL").value = data.imageURL;
+          document.getElementById("duration").value = data.duration;
+        });
+      };
+
+      window.addEventListener("load", () => loadMovie());
+
       document.addEventListener("submit", (event) => {
         event.preventDefault();
 
@@ -123,7 +137,8 @@
           return;
         }
 
-        moviesService.addMovie(
+        moviesService.updateMovie(
+          id,
           { title, imageURL, description, duration },
           () => {
             // TODO: redirect to home page
