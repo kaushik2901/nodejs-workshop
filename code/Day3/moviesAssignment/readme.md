@@ -25,8 +25,9 @@
 - GET List of movies
 - GET Detailed model of a single movies
 - POST Create a movie
-- POST Edit a movie
+- PUT Edit a movie
 - POST Like a movie
+- DELETE a movie
 
 
 ### Integrate APIs in frontend
