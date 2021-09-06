@@ -97,8 +97,10 @@
     <script type="module">
       import moviesService from "./movies-service.js";
 
-      window.delete = (id) => {
-        moviesService.delete(id);
+      window.deleteMovie = (id) => {
+        moviesService.deleteMovie(id, (data) => {
+          renderMovies(data);
+        });
       };
 
       window.incrementLike = (id) => {
@@ -110,11 +112,16 @@
       };
 
       const loadMovies = () => {
-        const container = document.getElementById("movies-list-container");
         moviesService.getAllMovies((moviesData) => {
-          container.innerHTML = moviesData
-            .map(
-              (movie) => `
+          renderMovies(moviesData);
+        });
+      };
+
+      const renderMovies = (moviesData) => {
+        const container = document.getElementById("movies-list-container");
+        container.innerHTML = moviesData
+          .map(
+            (movie) => `
                 <div class="col">
                     <div class="card shadow-sm">
                         <div style="background-image: url('${movie.imageURL}'); background-size: cover; background-repeat: no-repeat; background-position: center; width: 100%; height: 280px"></div>
@@ -126,7 +133,7 @@
                                   <a href="./view-movie.html?id=${movie.id}" class="btn btn-sm btn-outline-secondary">👀</a>
                                     <a href="./edit-movie.html?id=${movie.id}" class="btn btn-sm btn-outline-secondary">✏</a>
                                     <button onclick="incrementLike('${movie.id}')" class="btn btn-sm btn-outline-secondary"><span id="like-count-${movie.id}">${movie.likes}</span> ❤</button>
-                                    <button onclick="delete('${movie.id}')" class="btn btn-sm btn-outline-secondary">💩</button>
+                                    <button onclick="deleteMovie('${movie.id}')" class="btn btn-sm btn-outline-secondary">💩</button>
                                 </div>
                                 <small class="text-muted">${movie.duration} mins</small>
                             </div>
@@ -134,9 +141,8 @@
                     </div>
                 </div>
             `
-            )
-            .join(" ");
-        });
+          )
+          .join(" ");
       };
       window.addEventListener("load", () => loadMovies());
     </script>
