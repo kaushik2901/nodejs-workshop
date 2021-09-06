@@ -42,16 +42,18 @@
         </div>
     </div>
 
-    <main style="min-height: 80vh; display: flex;">
+    <main style="min-height: 80vh; display: flex;" id="main-div">
         <section class="py-5 text-center container" style="margin: auto;">
             <div class="row py-lg-5">
                 <div class="col-lg-6 col-md-8 mx-auto">
-                    <h1 class="fw-light">Movies Library Example</h1>
-                    <p class="lead text-muted">Something short and leading about the collection below—its contents, the
+                    <h1 class="fw-light" id="movie-title">Movies Library Example</h1>
+                    <p class="lead" id="movie-description">Something short and leading about the collection
+                        below—its contents, the
                         creator, etc. Make it short and sweet, but not too short so folks don’t simply skip over it
                         entirely.</p>
+                    <p id="movie-duration"></p>
                     <p>
-                        <a href="./add-movie.html" class="btn btn-primary my-2">Edit</a>
+                        <a href="./edit-movie.html" id="movie-edit-button" class="btn btn-primary my-2">Edit</a>
                     </p>
                 </div>
             </div>
@@ -75,28 +77,21 @@
 
         import moviesService from './movies-service.js'
 
-        const loadMovie = () => {
-            // const container = document.getElementById('movies-list-container');
-            // const moviesData = moviesService.getAllMovies();
+        const params = new URLSearchParams(location.search);
+        const id = params.get("id");
 
-            // container.innerHTML = moviesData.map(movie => `
-            //     <div class="col">
-            //         <div class="card shadow-sm">
-            //             <div style="background-image: url('${movie.imageURL}'); background-size: cover; background-repeat: no-repeat; background-position: center; width: 100%; height: 280px"></div>
-            //             <div class="card-body">
-            //                 <p class="card-text">${movie.title}</p>
-            //                 <p class="card-text">${movie.description}</p>
-            //                 <div class="d-flex justify-content-between align-items-center">
-            //                     <div class="btn-group">
-            //                         <a href="./view-movie.html?id=${movie.id}" class="btn btn-sm btn-outline-secondary">View</a>
-            //                         <a href="./edit-movie.html?id=${movie.id}" class="btn btn-sm btn-outline-secondary">Edit</a>
-            //                     </div>
-            //                     <small class="text-muted">${movie.duration}</small>
-            //                 </div>
-            //             </div>
-            //         </div>
-            //     </div>
-            // `).join(" ");
+        const loadMovie = () => {
+            moviesService.getMovie(id, (movie) => {
+                document.getElementById('movie-title').innerHTML = movie.title;
+                document.getElementById('movie-description').innerHTML = movie.description;
+                document.getElementById('movie-duration').innerHTML = `(${movie.duration})`;
+
+                document.getElementById('main-div').style.background = `url('${movie.imageURL}')`;
+                document.getElementById('main-div').style.backgroundPosition = "center";
+                document.getElementById('main-div').style.backgroundSize = "cover";
+                
+                document.getElementById('movie-edit-button').setAttribute("href", `./edit-movie.html?id=${id}`)
+            });
         }
 
         window.addEventListener('load', () => loadMovie());
