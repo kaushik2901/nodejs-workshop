@@ -1,63 +1,55 @@
-const data = [
-  {
-    id: "1",
-    title: "Test",
-    description:
-      "This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.",
-    imageURL: "https://via.placeholder.com/150x90",
-    duration: "9 mins",
-  },
-  {
-    id: "1",
-    title: "Test",
-    description:
-      "This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.",
-    imageURL: "https://via.placeholder.com/150x90",
-    duration: "9 mins",
-  },
-  {
-    id: "1",
-    title: "Test",
-    description:
-      "This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.",
-    imageURL: "https://via.placeholder.com/150x90",
-    duration: "9 mins",
-  },
-  {
-    id: "1",
-    title: "Test",
-    description:
-      "This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.",
-    imageURL: "https://via.placeholder.com/150x90",
-    duration: "9 mins",
-  },
-];
-
+const url = "http://localhost:3000/api/movies";
 export default {
   getAllMovies(callback) {
-    // TODO: Fetch from api instead of static data
-    callback(data);
+    // TODO: Fetch from api
+    fetch(url)
+      .then((res) => res.json())
+      .then((data) => callback(data));
   },
 
   getMovie(id, callback) {
-    // TODO: Fetch from api instead of static data
-    callback(data[id]);
+    // TODO: Fetch from api
+    fetch(`${url}/${id}`)
+      .then((res) => res.json())
+      .then((data) => callback(data));
   },
 
-  addMovie({ title, imageURL, description, duration }, callback) {
+  addMovie(data, callback) {
     // TODO: Implement following method with fetch API
     // TODO: On successful API call execute callback
+    fetch(`${url}`, {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    })
+      .then((res) => res.json())
+      .then((data) => callback(data));
   },
 
-  updateMovie(id, { title, imageURL, description, duration }, callback) {
-    console.log(id, title, imageURL, description, duration);
+  updateMovie(id, data, callback) {
     // TODO: Implement following method with fetch API
     // TODO: On successful API call execute callback
+    fetch(`${url}/${id}`, {
+      method: "PUT",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    })
+      .then((res) => res.json())
+      .then((data) => callback(data));
   },
 
   deleteMovie(id, callback) {
     // TODO: Implement following method with fetch API
     // TODO: On successful API call execute callback
+    fetch(`${url}/${id}`)
+      .then((res) => res.json())
+      .then((data) => callback(data));
   },
 
   incrementLike(id, callback) {
