@@ -88,6 +88,14 @@
     <script type="module">
         import moviesService from "./movies-service.js";
 
+        window.incrementLike = (id) => {
+            const countDOM = document.getElementById(`like-count-${id}`)
+            const count = parseInt(countDOM.innerHTML);
+            countDOM.innerHTML = count + 1;
+
+            moviesService.incrementLike(id, (data) => { });
+        }
+
         const loadMovies = () => {
             const container = document.getElementById("movies-list-container");
             moviesService.getAllMovies((moviesData) => {
@@ -104,7 +112,7 @@
                                 <div class="btn-group">
                                     <a href="./view-movie.html?id=${movie.id}" class="btn btn-sm btn-outline-secondary">View</a>
                                     <a href="./edit-movie.html?id=${movie.id}" class="btn btn-sm btn-outline-secondary">Edit</a>
-                                    <button onclick="incrementLike('${movie.id}')" class="btn btn-sm btn-outline-secondary">(${movie.likes}) ❤</button>
+                                    <button onClick="incrementLike('${movie.id}')" class="btn btn-sm btn-outline-secondary">(<span id="like-count-${movie.id}">${movie.likes}</span>) ❤</button>
                                 </div>
                                 <small class="text-muted">${movie.duration} mins</small>
                             </div>
@@ -114,11 +122,6 @@
             `).join(" ");
             });
         }
-
-        const incrementLike = (id) => {
-            moviesService.incrementLike(id, () => loadMovies());
-        }
-
         window.addEventListener('load', () => loadMovies());
     </script>
 </body>
