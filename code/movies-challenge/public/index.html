@@ -100,20 +100,24 @@
     <script type="module">
       import moviesService from "./movies-service.js";
 
-        window.incrementLike = (id) => {
-            const countDOM = document.getElementById(`like-count-${id}`)
-            const count = parseInt(countDOM.innerHTML);
-            countDOM.innerHTML = count + 1;
+      window.delete = (id) => {
+        moviesService.delete(id);
+      };
 
-            moviesService.incrementLike(id, (data) => { });
-        }
+      window.incrementLike = (id) => {
+        const countDOM = document.getElementById(`like-count-${id}`);
+        const count = parseInt(countDOM.innerHTML);
+        countDOM.innerHTML = count + 1;
 
-        const loadMovies = () => {
-            const container = document.getElementById("movies-list-container");
-            moviesService.getAllMovies((moviesData) => {
-                container.innerHTML = moviesData
-                    .map(
-                        (movie) => `
+        moviesService.incrementLike(id);
+      };
+
+      const loadMovies = () => {
+        const container = document.getElementById("movies-list-container");
+        moviesService.getAllMovies((moviesData) => {
+          container.innerHTML = moviesData
+            .map(
+              (movie) => `
                 <div class="col">
                     <div class="card shadow-sm">
                         <div style="background-image: url('${movie.imageURL}'); background-size: cover; background-repeat: no-repeat; background-position: center; width: 100%; height: 280px"></div>
@@ -132,9 +136,12 @@
                         </div>
                     </div>
                 </div>
-            });
-        }
-        window.addEventListener('load', () => loadMovies());
+            `
+            )
+            .join(" ");
+        });
+      };
+      window.addEventListener("load", () => loadMovies());
     </script>
   </body>
 </html>

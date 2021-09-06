@@ -45,7 +45,7 @@ export default {
       .then((data) => callback(data));
   },
 
-  deleteMovie(id, callback) {
+  deleteMovie(id, callback = () => {}) {
     // TODO: Implement following method with fetch API
     // TODO: On successful API call execute callback
     fetch(`${url}/${id}`)
@@ -53,7 +53,7 @@ export default {
       .then((data) => callback(data));
   },
 
-  incrementLike(id, callback) {
+  incrementLike(id, callback = () => {}) {
     // TODO: Implement following method with fetch API
     // TODO: On successful API call execute callback
     fetch(`${url}/${id}/increment-like`, {
