@@ -1,4 +1,5 @@
 const url = "http://localhost:3000/api/movies";
+
 export default {
   getAllMovies(callback) {
     // TODO: Fetch from api
@@ -53,6 +54,16 @@ export default {
   },
 
   incrementLike(id, callback) {
-    
-  }
+    // TODO: Implement following method with fetch API
+    // TODO: On successful API call execute callback
+    fetch(`${url}/${id}/increment-like`, {
+      method: "PUT",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => callback(data));
+  },
 };

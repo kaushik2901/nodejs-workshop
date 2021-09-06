@@ -80,6 +80,7 @@ app.post("/api/movies", (req, res) => {
     imageURL,
     description,
     duration,
+    likes: 0,
     createdAt: new Date(),
     updatedAt: new Date(),
   };
