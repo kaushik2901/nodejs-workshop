@@ -37,7 +37,7 @@
     <header>
       <div class="navbar navbar-dark bg-dark shadow-sm">
         <div class="container">
-          <a href="#" class="navbar-brand d-flex align-items-center">
+          <a href="/index.html" class="navbar-brand d-flex align-items-center">
             <strong>Movies</strong>
           </a>
         </div>
@@ -79,11 +79,10 @@
           <a href="#">Back to top</a>
         </p>
         <p class="mb-1">
-          Album example is &copy; Bootstrap, but please download and customize
-          it for yourself!
+          Movies Library example
         </p>
         <p class="mb-0">
-          New to Bootstrap? <a href="/">Visit the homepage</a> or read our
+          New to Bootstrap? <a href="/">Visit the homepage</a> or read
           <a href="/docs/5.1/getting-started/introduction/"
             >getting started guide</a
           >.
@@ -128,7 +127,7 @@
                                 <div class="btn-group">
                                   <a href="./view-movie.html?id=${movie.id}" class="btn btn-sm btn-outline-secondary">👀</a>
                                     <a href="./edit-movie.html?id=${movie.id}" class="btn btn-sm btn-outline-secondary">✏</a>
-                                    <button onclick="incrementLike('${movie.id}')" class="btn btn-sm btn-outline-secondary">${movie.likes} ❤</button>
+                                    <button onclick="incrementLike('${movie.id}')" class="btn btn-sm btn-outline-secondary"><span id="like-count-${movie.id}">${movie.likes}</span> ❤</button>
                                     <button onclick="delete('${movie.id}')" class="btn btn-sm btn-outline-secondary">💩</button>
                                 </div>
                                 <small class="text-muted">${movie.duration} mins</small>

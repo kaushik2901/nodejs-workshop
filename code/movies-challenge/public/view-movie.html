@@ -34,30 +34,32 @@
 </head>
 
 <body>
-    <div class="navbar navbar-dark bg-dark shadow-sm fixed-top">
+    <div class="navbar navbar-dark bg-dark shadow-sm">
         <div class="container">
-            <a href="#" class="navbar-brand d-flex align-items-center">
+            <a href="/index.html" class="navbar-brand d-flex align-items-center">
                 <strong>Movies</strong>
             </a>
         </div>
     </div>
 
-    <main style="min-height: 80vh; display: flex;" id="main-div">
-        <section class="py-5 text-center container" style="margin: auto;">
-            <div class="row py-lg-5">
-                <div class="col-lg-6 col-md-8 mx-auto">
-                    <h1 class="fw-light" id="movie-title">Movies Library Example</h1>
-                    <p class="lead" id="movie-description">Something short and leading about the collection
-                        below—its contents, the
-                        creator, etc. Make it short and sweet, but not too short so folks don’t simply skip over it
-                        entirely.</p>
-                    <p id="movie-duration"></p>
-                    <p>
-                        <a href="./edit-movie.html" id="movie-edit-button" class="btn btn-primary my-2">Edit</a>
-                    </p>
+    <main id="main-div" class="container">
+        <div class="row mt-5 p-5">
+            <div class="col-4">
+                <div class="card" id="movie-image">
                 </div>
             </div>
-        </section>
+            <div class="col-8">
+                <h1 class="fw-light" id="movie-title">Movies Library Example</h1>
+                <p class="lead" id="movie-description">Something short and leading about the collection
+                    below—its contents, the
+                    creator, etc. Make it short and sweet, but not too short so folks don’t simply skip over it
+                    entirely.</p>
+                <p><span id="movie-duration"></span> Minutes</p>
+                <p>
+                    <a href="./edit-movie.html" id="movie-edit-button" class="btn btn-primary my-2">Edit</a>
+                </p>
+            </div>
+        </div>
     </main>
 
     <footer class="text-muted py-5">
@@ -84,12 +86,9 @@
             moviesService.getMovie(id, (movie) => {
                 document.getElementById('movie-title').innerHTML = movie.title;
                 document.getElementById('movie-description').innerHTML = movie.description;
-                document.getElementById('movie-duration').innerHTML = `(${movie.duration})`;
+                document.getElementById('movie-duration').innerHTML = `${movie.duration}`;
+                document.getElementById('movie-image').innerHTML = `<img src="${movie.imageURL}" class="card-img-top" alt="${movie.title}">`;
 
-                document.getElementById('main-div').style.background = `url('${movie.imageURL}')`;
-                document.getElementById('main-div').style.backgroundPosition = "center";
-                document.getElementById('main-div').style.backgroundSize = "cover";
-                
                 document.getElementById('movie-edit-button').setAttribute("href", `./edit-movie.html?id=${id}`)
             });
         }
