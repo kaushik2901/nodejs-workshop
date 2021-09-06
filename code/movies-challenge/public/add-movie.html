@@ -117,17 +117,9 @@
           new FormData(event.target)
         );
 
-        const err = undefined; // TODO: Add Basic Javascript Validation and generate error object if form is not valid
-
-        if (err) {
-          alert(err.message);
-          return;
-        }
-
         moviesService.addMovie(
           { title, imageURL, description, duration },
           () => {
-            // TODO: redirect to home page
             window.location.href = "/";
           }
         );
