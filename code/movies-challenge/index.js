@@ -144,7 +144,7 @@ app.delete("/api/movies/:id", (req, res) => {
   }
 
   movies.splice(index, 1);
-  res.status(204).send();
+  res.json(movies);
 });
 
 http

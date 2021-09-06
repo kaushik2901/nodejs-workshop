@@ -48,7 +48,9 @@ export default {
   deleteMovie(id, callback = () => {}) {
     // TODO: Implement following method with fetch API
     // TODO: On successful API call execute callback
-    fetch(`${url}/${id}`)
+    fetch(`${url}/${id}`, {
+      method: "DELETE",
+    })
       .then((res) => res.json())
       .then((data) => callback(data));
   },
