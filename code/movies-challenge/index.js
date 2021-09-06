@@ -20,7 +20,7 @@ const movies = [
     title: "Test 1",
     description:
       "This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.",
-    imageURL: "https://via.placeholder.com/150x90",
+    imageURL: "https://source.unsplash.com/300x180/?movies",
     duration: "90",
     likes: 10,
     createdAt: new Date(),
@@ -31,7 +31,7 @@ const movies = [
     title: "Test 2",
     description:
       "This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.",
-    imageURL: "https://via.placeholder.com/150x90",
+    imageURL: "https://source.unsplash.com/300x180/?movies",
     duration: "120 mins",
     likes: 250,
     createdAt: new Date(),
@@ -42,7 +42,7 @@ const movies = [
     title: "Test 3",
     description:
       "This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.",
-    imageURL: "https://via.placeholder.com/150x90",
+    imageURL: "https://source.unsplash.com/300x180/?movies",
     duration: "86 mins",
     likes: 1000,
     createdAt: new Date(),
