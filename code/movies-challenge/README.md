@@ -18,7 +18,7 @@
 
 ### Integrate APIs in frontend
 
-- movies-services.js & edit-movie.html contains appropirate ToDos 
+- movies-services.js & edit-movie.html contains appropriate ToDos 
 
 ### Github
  - Push code in your assignment github repository
