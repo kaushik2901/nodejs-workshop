@@ -39,6 +39,10 @@ export default {
     callback(data);
   },
 
+  getMovie(id, callback) {
+    callback(data[0]);
+  },
+
   addMovie({ title, imageURL, description, duration }, callback) {
     // TODO: Implement following method with fetch API
     // TODO: On successful API call execute callback
