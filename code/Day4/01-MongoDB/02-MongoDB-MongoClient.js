@@ -1,6 +1,21 @@
 const { MongoClient } = require('mongodb');
 const uri = "mongodb://localhost:27017"
 
+// // Callback syntax
+
+// MongoClient.connect(uri, (err, client) => {
+//     if (err) return console.error(err);
+
+//     const db = client.db("test");
+
+//     db.collection('customers')
+//         .find({})
+//         .toArray((err, data) => {
+//             if (err) return console.error(err);
+//             console.log(data);
+//         })
+// })
+
 const main = async () => {
     try {
         const client = await MongoClient.connect(uri, { useUnifiedTopology: true });
