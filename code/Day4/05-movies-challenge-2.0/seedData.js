@@ -64,12 +64,7 @@ const movies = [
 
 const main = async () => {
     await Movie.deleteMany({});
-
-    for (let i = 0; i < movies.length; i++) {
-        const movie = movies[i];
-        await movie.save();
-    }
-
+    await Movie.insertMany(movies);
     process.exit(0);
 }
 
