@@ -92,8 +92,8 @@
       import moviesService from "./movies-service.js";
 
       window.deleteMovie = (id) => {
-        moviesService.deleteMovie(id, (data) => {
-          renderMovies(data);
+        moviesService.deleteMovie(id, () => {
+          loadMovies();
         });
       };
 
@@ -105,7 +105,7 @@
         moviesService.incrementLike(id);
       };
 
-      const loadMovies = () => {
+      window.loadMovies = () => {
         moviesService.getAllMovies((moviesData) => {
           renderMovies(moviesData);
         });
@@ -124,10 +124,10 @@
                             <p class="card-text" style="min-height: 250px">${movie.description}</p>
                             <div class="d-flex justify-content-between align-items-center">
                                 <div class="btn-group">
-                                  <a href="./view-movie.html?id=${movie.id}" class="btn btn-sm btn-outline-secondary">👀</a>
-                                    <a href="./edit-movie.html?id=${movie.id}" class="btn btn-sm btn-outline-secondary">✏</a>
-                                    <button onclick="incrementLike('${movie.id}')" class="btn btn-sm btn-outline-secondary"><span id="like-count-${movie.id}">${movie.likes}</span> ❤</button>
-                                    <button onclick="deleteMovie('${movie.id}')" class="btn btn-sm btn-outline-secondary">💩</button>
+                                  <a href="./view-movie.html?id=${movie._id}" class="btn btn-sm btn-outline-secondary">👀</a>
+                                    <a href="./edit-movie.html?id=${movie._id}" class="btn btn-sm btn-outline-secondary">✏</a>
+                                    <button onclick="incrementLike('${movie._id}')" class="btn btn-sm btn-outline-secondary"><span id="like-count-${movie._id}">${movie.likes}</span> ❤</button>
+                                    <button onclick="deleteMovie('${movie._id}')" class="btn btn-sm btn-outline-secondary">💩</button>
                                 </div>
                                 <small class="text-muted">${movie.duration} mins</small>
                             </div>

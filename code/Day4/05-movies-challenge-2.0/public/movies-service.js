@@ -51,8 +51,7 @@ export default {
     fetch(`${url}/${id}`, {
       method: "DELETE",
     })
-      .then((res) => res.json())
-      .then((data) => callback(data));
+      .then(() => callback());
   },
 
   incrementLike(id, callback = () => {}) {
