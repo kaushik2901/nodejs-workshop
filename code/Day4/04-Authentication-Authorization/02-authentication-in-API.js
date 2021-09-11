@@ -133,7 +133,8 @@ const verifyAuthenticated = (req, res, next) => {
 
 app.get("/", verifyAuthenticated, (req, res) => {
     res.json({
-        restrictedData: true
+        restrictedData: true,
+        user: req.user
     })
 })
 
