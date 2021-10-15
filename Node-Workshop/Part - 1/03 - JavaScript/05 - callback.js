@@ -1,4 +1,6 @@
 //Normal Callback examples
+//Clouser
+//API
 
 console.log("Before");
 
