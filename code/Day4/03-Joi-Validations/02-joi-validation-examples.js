@@ -41,12 +41,14 @@ app.post("/test", (req, res, next) => {
 });
 
 // This can be imported from separate file
-const requestBodySchemaValidator = (schema) => (req, res, next) => {
-    const response = schema.validate(req. body);
-    if(response.error) {
-        res.status(400).json(response.error)
-    } else {
-        next();
+const requestBodySchemaValidator = (schema) => {
+    return (req, res, next) => {
+        const response = schema.validate(req. body);
+        if(response.error) {
+            res.status(400).json(response.error)
+        } else {
+            next();
+        }
     }
 }
 

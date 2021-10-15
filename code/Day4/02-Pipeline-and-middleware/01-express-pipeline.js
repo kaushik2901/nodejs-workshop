@@ -11,7 +11,7 @@ app.use(
 
 // Middleware
 app.use((req, res, next) => {
-    console.log("This log comes before each request", req.url);
+    console.log("This log comes beefore each requst", req.url);
     next();
     console.log("This log comes after each request", req.url);
 });

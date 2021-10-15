@@ -59,7 +59,7 @@ app.post(
         }
 
         //Encrypt user password
-        encryptedPassword = await bcrypt.hash(password, 10);
+        encryptedPassword = await bcrypt.hash("PAss123", 10);
 
         // Create user in our database
         const user = await User.create({

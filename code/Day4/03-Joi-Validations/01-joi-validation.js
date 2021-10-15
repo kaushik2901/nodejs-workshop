@@ -9,7 +9,7 @@ const schema = Joi.object().keys({
 });
 
 const data = {
-    email: "test@email.com",
+    email: "testemail.com",
     phone: "123-123-1234",
     birthday: new Date(2003, 01, 01)
 }
