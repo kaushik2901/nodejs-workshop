@@ -50,6 +50,8 @@ function variableScoping() {
   // console.log("outside block", "blockScoped", blockScoped);
 }
 
+variableScoping();
+
 // console.log("outside function", "functionScoped", functionScoped);
 // console.log("outside function", "blockScoped", blockScoped);
 
@@ -84,4 +86,4 @@ const parentFunction = () => {
   nestedFunction();
 };
 
-parentFunction();
+// parentFunction();

@@ -19,23 +19,6 @@ const fs = require("fs");
 // Create Directory
 // fs.mkdirSync("./Directory");
 
-// Rename Directory
-
-// let filename = "";
-// let renamedFileName = "";
-
-// const readline = require("readline");
-// const rl = readline.createInterface(process.stdin, process.stdout);
-
-// rl.question("Enter file to rename ", (fN) => {
-//   filename = fN;
-//   rl.question("Enter the new name ", (newName) => {
-//     renamedFileName = newName;
-//     rl.close();
-//     fs.renameSync("./" + filename, "./" + renamedFileName);
-//   });
-// });
-
 // Remove Empty Directory
 // fs.rmdirSync("./RenamedDirectory");
 
@@ -61,4 +44,4 @@ const fs = require("fs");
 // fs.renameSync("test.json", "test2.json");
 
 // Delete File
-fs.rmSync("test2.json");
+// fs.rmSync("test2.json");
