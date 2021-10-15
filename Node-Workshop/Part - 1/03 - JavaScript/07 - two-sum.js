@@ -78,7 +78,6 @@ const twoSumValidations = (inputArray, target) => {
         }
     }
 };
-}
 
 //Two Sum - Object !
 const twoSumObject = function (inputArray, target) {
