@@ -9,6 +9,9 @@ const person = {
   },
 };
 
+console.log(person);
+console.dir(person); // For browser
+
 // personJSON
 // {
 //     "name": "kaushik",
