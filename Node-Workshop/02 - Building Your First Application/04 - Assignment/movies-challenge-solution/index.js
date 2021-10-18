@@ -183,6 +183,8 @@ app.delete("/api/movies/:id", (req, res) => {
   res.json(movies);
 });
 
+const port = process.env.PORT || 3000;
+
 http
   .createServer(app)
-  .listen(3000, () => console.log("Server started at 3000"));
+  .listen(port, () => console.log(`Server started at ${port}`));
