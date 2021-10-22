@@ -26,11 +26,11 @@ var x = null; // null
 
 
 // hoist
-console.log("unDeclaredVariable = ", unDeclaredVariable);
-var unDeclaredVariable = 10;
+// console.log("unDeclaredVariable = ", unDeclaredVariable);
+// var unDeclaredVariable = 10;
 
-// console.log("unDeclaredLetVariable = ", unDeclaredLetVariable);
-// let unDeclaredLetVariable = 10;
+console.log("unDeclaredLetVariable = ", unDeclaredLetVariable);
+let unDeclaredLetVariable = 10;
 
 // console.log("unDeclaredConstVariable = ", unDeclaredConstVariable);
 // let unDeclaredConstVariable = 10;

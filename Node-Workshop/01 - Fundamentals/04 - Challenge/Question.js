@@ -50,9 +50,9 @@ const users = [
 const createFilteredArray = (inputArray, isValid) => {
     const resultArray = [];
     for(let i = 0; i < inputArray.length; i++) {
+        if(isValid(resultArray[i]))
+            resultArray.push(inputArray[i])
 
-        //ToDo Implement required logic
-        //Hint : if user isValid store in result
     }
     return resultArray;
 }
@@ -65,6 +65,11 @@ const findUsersFromINDIA = (user) => {
 //Todo: Write findUsersWhoseFriendIsNorman
 //Hint : Write similar function as above with requried logic
 
-const prettyConsoleLog = (message, data) => console.log(message, JSON.stringify(data, null, 4)) 
-prettyConsoleLog("findUsersFromINDIA", createFilteredArray(users, findUsersFromINDIA));
+const prettyConsoleLog = (message, data) => 
+console.log(message, JSON.stringify(data, null, 4)) 
+
+prettyConsoleLog("findUsersFromINDIA", 
+createFilteredArray(users, findUsersFromINDIA));
+
+
 prettyConsoleLog("findUsersWhoseFriendIsNorman", createFilteredArray(users, findUsersWhoseFriendIsNorman));

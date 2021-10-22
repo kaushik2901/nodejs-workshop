@@ -1,0 +1,53 @@
+GET http://localhost:3001/ HTTP/1.1
+content-type: application/json
+
+{
+    "name": "sample",
+    "time": "Wed, 21 Oct 2015 18:27:50 GMT"
+}
+
+###
+
+GET http://localhost:3001/api HTTP/1.1
+content-type: application/json
+
+{
+    "name": "sample",
+    "time": "Wed, 21 Oct 2015 18:27:50 GMT"
+}
+
+###
+
+// Get Seller Appointments List
+GET http://localhost:3001/api/seller/appointments HTTP/1.1
+content-type: application/json
+
+###
+
+// Update Appointment Status to Pending || Confirm || Cancel.
+POST http://localhost:3001/api/seller/appointments HTTP/1.1
+content-type: application/json
+
+{
+    "id":"Appointment/12521138",
+    "status":"4"
+}
+
+###
+
+// Update Appointment Status to Missed.
+POST http://localhost:3001/api/seller/appointmentmissed HTTP/1.1
+content-type: application/json
+
+{
+    "id":"Appointment/125211382",
+    "status":"4"
+}
+
+### User API
+
+// Get User Appointments List
+GET http://localhost:3001/api/user/get_appointment_list HTTP/1.1
+content-type: application/json
+
+###

@@ -33,7 +33,7 @@ const myFunction3 = (a, b) => {
 
 const myFunction4 = (a, b) => a * b;
 
-const myFunction5 = (a) => a * 10;
+const myFunction5 = a => a * 10;
 
 // Variable scoping
 
@@ -46,7 +46,7 @@ function variableScoping() {
     console.log("inside block", blockScoped);
   }
 
-  console.log("outside block", "functionScoped", functionScoped);
+  // console.log("outside block", "functionScoped", functionScoped);
   // console.log("outside block", "blockScoped", blockScoped);
 }
 
@@ -58,7 +58,7 @@ variableScoping();
 
 // Function as variable
 
-function functionAsVariable(user) {
+const a =  functionAsVariable => (user) {
   console.log("Hello,", user);
 }
 
@@ -68,14 +68,18 @@ newVariable("Alice");
 
 // Returning a function
 
-function returnAFunction() {
-  return function internalFunction(name) {
-    console.log("Hello,", name);
+function returnAFunction(a) {
+
+  return (name) => {
+    console.log("Hello,", name, a);
   }
 }
 
-var internalFunction = returnAFunction();
+const internalFunction = returnAFunction(10);
 internalFunction("John");
+
+var internalFunction2 = returnAFunction(20);
+internalFunction2("Alice");
 
 // Closure and private function
 const parentFunction = () => {

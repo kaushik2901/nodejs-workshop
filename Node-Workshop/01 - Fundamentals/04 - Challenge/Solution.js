@@ -69,11 +69,16 @@ const findUsersWhoseFriendIsNorman = (user) => {
   return user.friends.find((friend) => friend.name === "Norman");
 };
 
+
+
+createFilteredArray(users, findUsersFromINDIA);
+
+
 const prettyConsoleLog = (message, data) =>
   console.log(message, JSON.stringify(data, null, 4));
 console.log(
   "findUsersFromINDIA",
-  createFilteredArray(users, findUsersFromINDIA)
+  
 );
 prettyConsoleLog(
   "findUsersWhoseFriendIsNorman",
@@ -91,4 +96,7 @@ prettyConsoleLog(
   )
 );
 
-//Pure vs Impure Function ?
+
+
+
+console.log(users.filter(user => user.countryCode == "IND"))

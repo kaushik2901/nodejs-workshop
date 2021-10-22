@@ -1,6 +1,3 @@
-//Normal Callback examples
-//API
-
 console.log("Before");
 
 function myCallBackFunction(user) {
@@ -10,10 +7,14 @@ function myCallBackFunction(user) {
 
 getUser(1, myCallBackFunction);
 
-function getUser(id, callback) {
+
+//library
+function getUser(id, callback, errCallback) {
   setTimeout(() => {
     console.log("i/o activity which takes time");
     const userFromDB = { id: id, userName: "rohan" };
-    callback(userFromDB);
+    if(userFromDB != null)
+      callback(userFromDB);
+    else errCallback()
   }, 3000);
 }
